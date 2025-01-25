@@ -1,0 +1,19 @@
+{
+  "name": "04-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "ts-node src/index.ts",
+    "start:prod": "node dist/index.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
