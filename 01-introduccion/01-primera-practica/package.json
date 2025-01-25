@@ -1,0 +1,11 @@
+{
+  "name": "01-primera-practica",
+  "version": "1.0.0",
+  "description": "Primera practica con Node",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Brian Valdivieso",
+  "license": "ISC"
+}
