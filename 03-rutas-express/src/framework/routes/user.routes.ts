@@ -1,12 +1,10 @@
 import { NextFunction, Router, Request, Response } from "express";
+import { createUser, UserController } from "../../controllers/user.controllers";
 
 const userRouter = Router()
+const userController = new UserController();
 
-userRouter.post("/", (req: Request, res: Response, next: NextFunction) => {
-    console.log("POST / recibido")
-    console.log(req.body)
-    res.status(201).send({user: req.body})
-})
+userRouter.post("/", createUser) //Controller como handler
 
 userRouter.get('/', (req: Request, res: Response, next: NextFunction) => {
     console.log("GET / recibido")
@@ -20,9 +18,11 @@ userRouter.get('/find',(req: Request, res: Response, next: NextFunction) => {
     res.redirect('list')
 })
 
+//Controller como clase
 userRouter.get('/list',(req: Request, res: Response, next: NextFunction) => {
     console.log("GET /list recibido")
-    res.status(200).send("Listado de usuarios completo!")
+    const result = userController.list();
+    res.status(200).send(result)
 })
 
 userRouter.get('/:id',(req: Request, res: Response, next: NextFunction) => {
@@ -51,6 +51,17 @@ userRouter.post("/login", (req: Request, res: Response, next: NextFunction) => {
     res.cookie('curso_node_cookie', "test")
     res.set('header_curso_node', "testing")
     res.status(200).send('Logged')
+})
+
+//Controller como clase
+userRouter.put("/", (req: Request, res: Response, next: NextFunction) => {
+    console.log("PUT / recibido")
+    if (!req.body.name) {
+        res.status(400).send("Name is required")
+        return;
+    }
+    const result = userController.update(req.body.name);
+    res.status(200).send(result)
 })
 
 
