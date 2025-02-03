@@ -10,7 +10,7 @@
             "name": "Run Script: start:dev",
             "request": "launch",
             "command": "npm run start:dev",
-            "cwd": "${workspaceFolder}\\04-crud"
+            "cwd": "${workspaceFolder}\\lab"
         }
     ]
 }
