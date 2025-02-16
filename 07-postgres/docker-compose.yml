@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./
+    container_name: express_app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_HOST=postgres_db
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+      - DB_DATABASE=curso-node
+
+  postgres_db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=curso-node
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_docker:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_docker:
