@@ -1,0 +1,41 @@
+version: '3'
+services:
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - 3100:3100
+    volumes:
+      - ./loki-config.yml:/etc/loki/loki-config.yml
+      - ./data/loki/index:/loki/index
+      - ./data/loki/chunks:/loki/chunks
+      - ./data/loki/boltdb-cache:/loki/boltdb-cache
+    command: -config.file=/etc/loki/loki-config.yml -config.expand-env=true
+    networks:
+      - curso-node
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - curso-node
+  
+  prometheus:
+    image: prom/prometheus:v2.46.0
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command: --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - curso-node
+
+networks:
+  curso-node:
+    driver: bridge
+
+volumes:
+  grafana-data:
+    name: grafana-data
