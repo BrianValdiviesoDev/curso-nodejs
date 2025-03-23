@@ -1,0 +1,12 @@
+extends layout 
+
+mixin userCard(name, email, id)
+    .user-card 
+        li: a(href=`/users/${id}`) #{name} (#{email})
+
+block contenido 
+    h2 User list 
+
+    each user in users 
+        +userCard(user.name, user.email, user._id)
+
