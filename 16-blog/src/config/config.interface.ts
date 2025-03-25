@@ -1,3 +1,4 @@
 export interface IConfig {
-    mongoUri:string
+    mongoUri: string
+    jwtSecret:string
 }

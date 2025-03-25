@@ -5,7 +5,11 @@
   "scripts": {
     "start:dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +18,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^22.10.10",
     "@types/supertest": "^6.0.2",
@@ -27,8 +32,11 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/mongodb-memory-server": "^1.8.0",
     "bcryptjs": "^3.0.2",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb-memory-server": "^10.1.4",
     "mongoose": "^8.12.2",
     "winston": "^3.17.0"
   }

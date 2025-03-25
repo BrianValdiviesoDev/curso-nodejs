@@ -1,0 +1,29 @@
+{
+    "moduleFileExtensions": ["js","json","ts"],
+    "rootDir": "src",
+    "testRegex": ".*\\.test\\.ts$",
+    "transform": { "^.+\\.(t|j)s$": "ts-jest" },
+    "collectCoverageFrom": [
+        "**/*.(t|j)s",
+        "!index.ts",
+        "!config/**",
+        "!errors/**"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleDirectories": ["<rootDir>/../", "node_modules"],
+    "reporters": ["default",
+        [
+            "<rootDir>/../node_modules/jest-html-reporters",
+            {
+                "pageTitle": "Test Report",
+                "includeConsoleLog": false,
+                "includeFailureMsg": true,
+                "append": true,
+                "publicPath": "./html-report",
+                "filename": "report.html",
+                "openReport": false
+            }
+        ]
+    ]
+}

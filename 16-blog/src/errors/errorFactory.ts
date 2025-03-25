@@ -30,3 +30,10 @@ export class ServiceUnavailable extends AppError {
 	}
 }
 
+export class ForbiddenError extends AppError {
+	constructor(message: string = 'Forbidden') {
+		super(message);
+	}
+}
+
+

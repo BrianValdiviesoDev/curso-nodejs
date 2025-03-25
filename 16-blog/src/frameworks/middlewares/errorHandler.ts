@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { BadRequest, NotFoundError, NotModified, ServiceUnavailable } from "../../errors/errorFactory";
+import { BadRequest, ForbiddenError, NotFoundError, NotModified, ServiceUnavailable } from "../../errors/errorFactory";
 
 export class ErrorHandler{
 
@@ -12,6 +12,8 @@ export class ErrorHandler{
 			ErrorHandler.buildResponse(err.message, 400, res);
 		}  else if (err.name === ServiceUnavailable.name) {
 			ErrorHandler.buildResponse(err.message, 503, res);
+		}   else if (err.name === ForbiddenError.name) {
+			ErrorHandler.buildResponse(err.message, 403, res);
 		} else {
 			ErrorHandler.buildResponse(err.message, 500, res);
 		}
