@@ -3,6 +3,15 @@ import { ForbiddenError } from "../../errors/errorFactory";
 import jwt from "jsonwebtoken"
 import { Rol } from "../../models/user.interface";
 
+/**
+ * @openapi
+ * components:
+ *   securitySchemes:
+ *     BearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ */
 export const verifyJWT = (jwtSecret: string) => {
     return (req: any, res: Response, next: NextFunction) => {
         const token = req.headers.authorization?.split(" ")[1]

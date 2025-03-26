@@ -6,6 +6,7 @@ import { Config as ConfigDev } from '../config/config.dev'
 import { MongoService } from './mongo'
 import { UserRouter } from './routes/user.routes'
 import { PostRouter } from './routes/post.routes'
+import { setupSwagger } from './swagger'
 
 try {
     process.loadEnvFile()
@@ -34,7 +35,7 @@ const app = async (): Promise<Express> => {
     app.use('/api/users', userRouter)
     app.use('/api/posts', postRouter)
 
-
+    setupSwagger(app)
     app.use(ErrorHandler.handle)
     return app
 }
